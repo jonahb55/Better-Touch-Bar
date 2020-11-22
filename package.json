@@ -10,16 +10,189 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:better-touch-bar.helloWorld"
+		"*"
 	],
 	"main": "./extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "better-touch-bar.helloWorld",
-				"title": "Hello World"
+				"command": "better-touch-bar.tabNav.previous",
+				"title": "1-Previous Tab",
+				"icon": "./assets/back.png"
+			},
+			{
+				"command": "better-touch-bar.tabNav.next",
+				"title": "2-Next Tab",
+				"icon": "./assets/forward.png"
+			},
+			{
+				"command": "better-touch-bar.run.main",
+				"title": "Run",
+				"icon": "./assets/run.png"
+			},
+			{
+				"command": "better-touch-bar.run.cancel",
+				"title": "Cancel"
+			},
+			{
+				"command": "better-touch-bar.run.build",
+				"title": "Build"
+			},
+			{
+				"command": "better-touch-bar.run.deploy",
+				"title": "Deploy"
+			},
+			{
+				"command": "better-touch-bar.run.startRioLog",
+				"title": "RioLog"
+			},
+			{
+				"command": "better-touch-bar.run.simulate",
+				"title": "Simulate"
+			},
+			{
+				"command": "better-touch-bar.run.startTool",
+				"title": "Start Tool"
+			},
+			{
+				"command": "better-touch-bar.git.showChanges",
+				"title": "Changes"
+			},
+			{
+				"command": "better-touch-bar.git.stageAll",
+				"title": "Stage"
+			},
+			{
+				"command": "better-touch-bar.git.sync",
+				"title": "Sync"
+			},
+			{
+				"command": "better-touch-bar.dev.quickFix",
+				"title": "🛠"
+			},
+			{
+				"command": "better-touch-bar.dev.suggest",
+				"title": "🤔"
 			}
-		]
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "better-touch-bar.tabNav.previous",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.tabNav.next",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.run.main",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.run.cancel",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.run.build",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.run.deploy",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.run.startRioLog",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.run.simulate",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.run.startTool",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.git.showChanges",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.git.stageAll",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.git.sync",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.dev.quickFix",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.dev.suggest",
+					"when": "false"
+				}
+			],
+			"touchBar": [
+				{
+					"command": "better-touch-bar.tabNav.previous",
+					"group": "navigation"
+				},
+				{
+					"command": "better-touch-bar.tabNav.next",
+					"group": "navigation"
+				},
+				{
+					"command": "better-touch-bar.run.main",
+					"group": "group_1"
+				},
+				{
+					"command": "better-touch-bar.run.cancel",
+					"group": "run_group_1"
+				},
+				{
+					"command": "better-touch-bar.run.build",
+					"group": "run_group_2"
+				},
+				{
+					"command": "better-touch-bar.run.deploy",
+					"group": "run_group_2"
+				},
+				{
+					"command": "better-touch-bar.run.startRioLog",
+					"group": "run_group_2"
+				},
+				{
+					"command": "better-touch-bar.run.simulate",
+					"group": "run_group_2"
+				},
+				{
+					"command": "better-touch-bar.run.startTool",
+					"group": "run_group_2"
+				},
+				{
+					"command": "better-touch-bar.git.showChanges",
+					"group": "group_2"
+				},
+				{
+					"command": "better-touch-bar.git.stageAll",
+					"group": "group_2"
+				},
+				{
+					"command": "better-touch-bar.git.sync",
+					"group": "group_2"
+				},
+				{
+					"command": "better-touch-bar.dev.quickFix",
+					"group": "group_3"
+				},
+				{
+					"command": "better-touch-bar.dev.suggest",
+					"group": "group_3"
+				}
+			]
+		}
 	},
 	"scripts": {
 		"lint": "eslint .",
