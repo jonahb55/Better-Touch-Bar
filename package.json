@@ -145,51 +145,63 @@
 				},
 				{
 					"command": "better-touch-bar.run.main",
-					"group": "group_1"
+					"group": "group_1",
+					"when": "better-touch-bar:menu == 'main'"
 				},
 				{
 					"command": "better-touch-bar.run.cancel",
-					"group": "run_group_1"
+					"group": "run_group_1",
+					"when": "better-touch-bar:menu == 'run'"
 				},
 				{
 					"command": "better-touch-bar.run.build",
-					"group": "run_group_2"
+					"group": "run_group_2",
+					"when": "better-touch-bar:menu == 'run'"
 				},
 				{
 					"command": "better-touch-bar.run.deploy",
-					"group": "run_group_2"
+					"group": "run_group_2",
+					"when": "better-touch-bar:menu == 'run'"
 				},
 				{
 					"command": "better-touch-bar.run.startRioLog",
-					"group": "run_group_2"
+					"group": "run_group_2",
+					"when": "better-touch-bar:menu == 'run'"
 				},
 				{
 					"command": "better-touch-bar.run.simulate",
-					"group": "run_group_2"
+					"group": "run_group_2",
+					"when": "better-touch-bar:menu == 'run'"
 				},
 				{
 					"command": "better-touch-bar.run.startTool",
-					"group": "run_group_2"
+					"group": "run_group_2",
+					"when": "better-touch-bar:menu == 'run'"
 				},
 				{
 					"command": "better-touch-bar.git.showChanges",
-					"group": "group_2"
+					"group": "group_2",
+					"when": "better-touch-bar:menu == 'main'"
 				},
 				{
 					"command": "better-touch-bar.git.stageAll",
-					"group": "group_2"
+					"group": "group_2",
+					"when": "better-touch-bar:menu == 'main'"
 				},
 				{
 					"command": "better-touch-bar.git.sync",
-					"group": "group_2"
+					"group": "group_2",
+					"when": "better-touch-bar:menu == 'main'"
 				},
 				{
 					"command": "better-touch-bar.dev.quickFix",
-					"group": "group_3"
+					"group": "group_3",
+					"when": "better-touch-bar:menu == 'main'"
 				},
 				{
 					"command": "better-touch-bar.dev.suggest",
-					"group": "group_3"
+					"group": "group_3",
+					"when": "better-touch-bar:menu == 'main'"
 				}
 			]
 		}

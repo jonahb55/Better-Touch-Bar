@@ -5,11 +5,6 @@ const fs = require('fs');
 
 const userConfig = vscode.workspace.getConfiguration();
 
-const defaultButtons = ["workbench.action.navigateBack", "workbench.action.navigateForward", "workbench.action.debug.start", "workbench.action.debug.run"]
-const mainButtons = ["better-touch-bar.run.main", "better-touch-bar.git.showChanges", "better-touch-bar.git.stageAll", "better-touch-bar.git.sync", "better-touch-bar.dev.quickFix", "better-touch-bar.dev.suggest"]
-const runButtons = ["better-touch-bar.run.cancel", "better-touch-bar.run.build", "better-touch-bar.run.deploy", "better-touch-bar.run.startRioLog", "better-touch-bar.run.simulate", "better-touch-bar.run.startTool"]
-
-
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 
@@ -18,12 +13,17 @@ const runButtons = ["better-touch-bar.run.cancel", "better-touch-bar.run.build",
  */
 function activate(context) {
 
+	function openMenu(menu) {
+		vscode.commands.executeCommand("setContext", "better-touch-bar:menu", menu);
+	}
+
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "better-touch-bar" is now active!');
 
 	// Remove default buttons
-	userConfig.update("keyboard.touchbar.ignored", defaultButtons.concat(runButtons), true)
+	userConfig.update("keyboard.touchbar.ignored", ["workbench.action.navigateBack", "workbench.action.navigateForward", "workbench.action.debug.start", "workbench.action.debug.run"], true)
+	openMenu("main")
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
@@ -40,7 +40,7 @@ function activate(context) {
 		let folders = vscode.workspace.workspaceFolders
 		if (folders != undefined) {
 			if (fs.existsSync(folders[0].uri.fsPath + "/.wpilib")) {
-				userConfig.update("keyboard.touchbar.ignored", defaultButtons.concat(mainButtons), true)
+				openMenu("run")
 				return;
 			}
 		}
@@ -48,32 +48,32 @@ function activate(context) {
 	});
 
 	let runCancel = vscode.commands.registerCommand('better-touch-bar.run.cancel', function () {
-		userConfig.update("keyboard.touchbar.ignored", defaultButtons.concat(runButtons), true)
+		openMenu("main")
 	});
 
 	let runBuild = vscode.commands.registerCommand('better-touch-bar.run.build', function () {
 		vscode.commands.executeCommand("wpilibcore.buildCode");
-		userConfig.update("keyboard.touchbar.ignored", defaultButtons.concat(runButtons), true)
+		openMenu("main")
 	});
 
 	let runDeploy = vscode.commands.registerCommand('better-touch-bar.run.deploy', function () {
 		vscode.commands.executeCommand("wpilibcore.deployCode");
-		userConfig.update("keyboard.touchbar.ignored", defaultButtons.concat(runButtons), true)
+		openMenu("main")
 	});
 
 	let runStartRioLog = vscode.commands.registerCommand('better-touch-bar.run.startRioLog', function () {
 		vscode.commands.executeCommand("wpilibcore.startRioLog");
-		userConfig.update("keyboard.touchbar.ignored", defaultButtons.concat(runButtons), true)
+		openMenu("main")
 	});
 
 	let runSimulate = vscode.commands.registerCommand('better-touch-bar.run.simulate', function () {
 		vscode.commands.executeCommand("wpilibcore.simulateCode");
-		userConfig.update("keyboard.touchbar.ignored", defaultButtons.concat(runButtons), true)
+		openMenu("main")
 	});
 
 	let runStartTool = vscode.commands.registerCommand('better-touch-bar.run.startTool', function () {
 		vscode.commands.executeCommand("wpilibcore.startTool");
-		userConfig.update("keyboard.touchbar.ignored", defaultButtons.concat(runButtons), true)
+		openMenu("main")
 	});
 
 	let showChanges = vscode.commands.registerCommand('better-touch-bar.git.showChanges', function () {
