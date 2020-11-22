@@ -26,13 +26,13 @@
 				"icon": "./assets/forward.png"
 			},
 			{
+				"command": "better-touch-bar.cancel",
+				"title": "Cancel"
+			},
+			{
 				"command": "better-touch-bar.run.main",
 				"title": "Run",
 				"icon": "./assets/run.png"
-			},
-			{
-				"command": "better-touch-bar.run.cancel",
-				"title": "Cancel"
 			},
 			{
 				"command": "better-touch-bar.run.build",
@@ -55,24 +55,44 @@
 				"title": "Start Tool"
 			},
 			{
-				"command": "better-touch-bar.git.showChanges",
-				"title": "Changes"
+				"command": "better-touch-bar.git.branch",
+				"title": "Branch..."
 			},
 			{
-				"command": "better-touch-bar.git.stageAll",
-				"title": "Stage"
+				"command": "better-touch-bar.git.checkout",
+				"title": "Checkout"
+			},
+			{
+				"command": "better-touch-bar.git.merge",
+				"title": "Merge"
+			},
+			{
+				"command": "better-touch-bar.git.reset",
+				"title": "Reset"
+			},
+			{
+				"command": "better-touch-bar.git.pop",
+				"title": "Pop Stash"
+			},
+			{
+				"command": "better-touch-bar.git.stash",
+				"title": "Stash"
+			},
+			{
+				"command": "better-touch-bar.git.showChanges",
+				"title": "Changes"
 			},
 			{
 				"command": "better-touch-bar.git.sync",
 				"title": "Sync"
 			},
 			{
-				"command": "better-touch-bar.dev.quickFix",
-				"title": "🛠"
-			},
-			{
 				"command": "better-touch-bar.dev.suggest",
 				"title": "🤔"
+			},
+			{
+				"command": "better-touch-bar.dev.quickFix",
+				"title": "🛠"
 			}
 		],
 		"menus": {
@@ -86,11 +106,11 @@
 					"when": "false"
 				},
 				{
-					"command": "better-touch-bar.run.main",
+					"command": "better-touch-bar.cancel",
 					"when": "false"
 				},
 				{
-					"command": "better-touch-bar.run.cancel",
+					"command": "better-touch-bar.run.main",
 					"when": "false"
 				},
 				{
@@ -114,11 +134,31 @@
 					"when": "false"
 				},
 				{
-					"command": "better-touch-bar.git.showChanges",
+					"command": "better-touch-bar.git.branch",
 					"when": "false"
 				},
 				{
-					"command": "better-touch-bar.git.stageAll",
+					"command": "better-touch-bar.git.checkout",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.git.reset",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.git.merge",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.git.pop",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.git.stash",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.git.showChanges",
 					"when": "false"
 				},
 				{
@@ -126,11 +166,11 @@
 					"when": "false"
 				},
 				{
-					"command": "better-touch-bar.dev.quickFix",
+					"command": "better-touch-bar.dev.suggest",
 					"when": "false"
 				},
 				{
-					"command": "better-touch-bar.dev.suggest",
+					"command": "better-touch-bar.dev.quickFix",
 					"when": "false"
 				}
 			],
@@ -144,47 +184,72 @@
 					"group": "navigation"
 				},
 				{
+					"command": "better-touch-bar.cancel",
+					"group": "cancel",
+					"when": "better-touch-bar:menu == 'run' || better-touch-bar:menu == 'git'"
+				},
+				{
 					"command": "better-touch-bar.run.main",
 					"group": "group_1",
 					"when": "better-touch-bar:menu == 'main'"
 				},
 				{
-					"command": "better-touch-bar.run.cancel",
-					"group": "run_group_1",
-					"when": "better-touch-bar:menu == 'run'"
-				},
-				{
 					"command": "better-touch-bar.run.build",
-					"group": "run_group_2",
+					"group": "run_group",
 					"when": "better-touch-bar:menu == 'run'"
 				},
 				{
 					"command": "better-touch-bar.run.deploy",
-					"group": "run_group_2",
+					"group": "run_group",
 					"when": "better-touch-bar:menu == 'run'"
 				},
 				{
 					"command": "better-touch-bar.run.startRioLog",
-					"group": "run_group_2",
+					"group": "run_group",
 					"when": "better-touch-bar:menu == 'run'"
 				},
 				{
 					"command": "better-touch-bar.run.simulate",
-					"group": "run_group_2",
+					"group": "run_group",
 					"when": "better-touch-bar:menu == 'run'"
 				},
 				{
 					"command": "better-touch-bar.run.startTool",
-					"group": "run_group_2",
+					"group": "run_group",
 					"when": "better-touch-bar:menu == 'run'"
 				},
 				{
-					"command": "better-touch-bar.git.showChanges",
+					"command": "better-touch-bar.git.branch",
 					"group": "group_2",
 					"when": "better-touch-bar:menu == 'main'"
 				},
 				{
-					"command": "better-touch-bar.git.stageAll",
+					"command": "better-touch-bar.git.checkout",
+					"group": "git_group_1",
+					"when": "better-touch-bar:menu == 'git'"
+				},
+				{
+					"command": "better-touch-bar.git.merge",
+					"group": "git_group_1",
+					"when": "better-touch-bar:menu == 'git'"
+				},
+				{
+					"command": "better-touch-bar.git.reset",
+					"group": "git_group_1",
+					"when": "better-touch-bar:menu == 'git'"
+				},
+				{
+					"command": "better-touch-bar.git.pop",
+					"group": "git_group_2",
+					"when": "better-touch-bar:menu == 'git'"
+				},
+				{
+					"command": "better-touch-bar.git.stash",
+					"group": "git_group_2",
+					"when": "better-touch-bar:menu == 'git'"
+				},
+				{
+					"command": "better-touch-bar.git.showChanges",
 					"group": "group_2",
 					"when": "better-touch-bar:menu == 'main'"
 				},
@@ -194,12 +259,12 @@
 					"when": "better-touch-bar:menu == 'main'"
 				},
 				{
-					"command": "better-touch-bar.dev.quickFix",
+					"command": "better-touch-bar.dev.suggest",
 					"group": "group_3",
 					"when": "better-touch-bar:menu == 'main'"
 				},
 				{
-					"command": "better-touch-bar.dev.suggest",
+					"command": "better-touch-bar.dev.quickFix",
 					"group": "group_3",
 					"when": "better-touch-bar:menu == 'main'"
 				}

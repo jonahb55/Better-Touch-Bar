@@ -36,6 +36,10 @@ function activate(context) {
 		vscode.commands.executeCommand("workbench.action.nextEditorInGroup");
 	});
 
+	let cancel = vscode.commands.registerCommand('better-touch-bar.cancel', function () {
+		openMenu("main")
+	});
+
 	let runMain = vscode.commands.registerCommand('better-touch-bar.run.main', function () {
 		let folders = vscode.workspace.workspaceFolders
 		if (folders != undefined) {
@@ -45,10 +49,6 @@ function activate(context) {
 			}
 		}
 		vscode.commands.executeCommand("workbench.action.debug.run");
-	});
-
-	let runCancel = vscode.commands.registerCommand('better-touch-bar.run.cancel', function () {
-		openMenu("main")
 	});
 
 	let runBuild = vscode.commands.registerCommand('better-touch-bar.run.build', function () {
@@ -76,13 +76,32 @@ function activate(context) {
 		openMenu("main")
 	});
 
-	let showChanges = vscode.commands.registerCommand('better-touch-bar.git.showChanges', function () {
-		vscode.commands.executeCommand("git.openChange");
+	let branch = vscode.commands.registerCommand('better-touch-bar.git.branch', function () {
+		openMenu("git")
 	});
 
-	let stageAll = vscode.commands.registerCommand('better-touch-bar.git.stageAll', function () {
-		vscode.commands.executeCommand("workbench.scm.focus");
-		vscode.commands.executeCommand("git.stageAll");
+	let checkout = vscode.commands.registerCommand('better-touch-bar.git.checkout', function () {
+		vscode.commands.executeCommand("git.checkout");
+	});
+
+	let merge = vscode.commands.registerCommand('better-touch-bar.git.merge', function () {
+		vscode.commands.executeCommand("git.merge");
+	});
+
+	let reset = vscode.commands.registerCommand('better-touch-bar.git.reset', function () {
+		vscode.commands.executeCommand("git.cleanAll");
+	});
+
+	let pop = vscode.commands.registerCommand('better-touch-bar.git.pop', function () {
+		vscode.commands.executeCommand("git.stashPopLatest");
+	});
+
+	let stash = vscode.commands.registerCommand('better-touch-bar.git.stash', function () {
+		vscode.commands.executeCommand("git.stash");
+	});
+
+	let showChanges = vscode.commands.registerCommand('better-touch-bar.git.showChanges', function () {
+		vscode.commands.executeCommand("git.openChange");
 	});
 
 	let sync = vscode.commands.registerCommand('better-touch-bar.git.sync', function () {
@@ -97,7 +116,7 @@ function activate(context) {
 		vscode.commands.executeCommand("editor.action.triggerSuggest");
 	});
 
-	context.subscriptions.push(previousTab, nextTab, runMain, runCancel, runBuild, runDeploy, runStartRioLog, runSimulate, runStartTool, showChanges, stageAll, sync, quickFix, suggest);
+	context.subscriptions.push(previousTab, nextTab, cancel, runMain, runBuild, runDeploy, runStartRioLog, runSimulate, runStartTool, branch, checkout, merge, reset, pop, stash, showChanges, sync, quickFix, suggest);
 }
 exports.activate = activate;
 
