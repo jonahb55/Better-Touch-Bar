@@ -87,8 +87,24 @@
 				"title": "Sync"
 			},
 			{
-				"command": "better-touch-bar.dev.suggest",
-				"title": "🤔"
+				"command": "better-touch-bar.dev.peek",
+				"title": "🧐"
+			},
+			{
+				"command": "better-touch-bar.dev.peekDefinition",
+				"title": "Definition"
+			},
+			{
+				"command": "better-touch-bar.dev.peekTypeDefinition",
+				"title": "Type Def"
+			},
+			{
+				"command": "better-touch-bar.dev.peekImplementations",
+				"title": "Implements"
+			},
+			{
+				"command": "better-touch-bar.dev.peekReferences",
+				"title": "References"
 			},
 			{
 				"command": "better-touch-bar.dev.quickFix",
@@ -166,7 +182,23 @@
 					"when": "false"
 				},
 				{
-					"command": "better-touch-bar.dev.suggest",
+					"command": "better-touch-bar.dev.peek",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.dev.peekDefinition",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.dev.peekTypeDefinition",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.dev.peekImplementations",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.dev.peekReferences",
 					"when": "false"
 				},
 				{
@@ -186,7 +218,7 @@
 				{
 					"command": "better-touch-bar.cancel",
 					"group": "cancel",
-					"when": "better-touch-bar:menu == 'run' || better-touch-bar:menu == 'git'"
+					"when": "better-touch-bar:menu == 'run' || better-touch-bar:menu == 'git' || better-touch-bar:menu == 'peek'"
 				},
 				{
 					"command": "better-touch-bar.run.main",
@@ -195,27 +227,27 @@
 				},
 				{
 					"command": "better-touch-bar.run.build",
-					"group": "run_group",
+					"group": "run_group_1",
 					"when": "better-touch-bar:menu == 'run'"
 				},
 				{
 					"command": "better-touch-bar.run.deploy",
-					"group": "run_group",
+					"group": "run_group_1",
 					"when": "better-touch-bar:menu == 'run'"
 				},
 				{
 					"command": "better-touch-bar.run.startRioLog",
-					"group": "run_group",
+					"group": "run_group_1",
 					"when": "better-touch-bar:menu == 'run'"
 				},
 				{
 					"command": "better-touch-bar.run.simulate",
-					"group": "run_group",
+					"group": "run_group_1",
 					"when": "better-touch-bar:menu == 'run'"
 				},
 				{
 					"command": "better-touch-bar.run.startTool",
-					"group": "run_group",
+					"group": "run_group_1",
 					"when": "better-touch-bar:menu == 'run'"
 				},
 				{
@@ -259,9 +291,29 @@
 					"when": "better-touch-bar:menu == 'main'"
 				},
 				{
-					"command": "better-touch-bar.dev.suggest",
+					"command": "better-touch-bar.dev.peek",
 					"group": "group_3",
 					"when": "better-touch-bar:menu == 'main'"
+				},
+				{
+					"command": "better-touch-bar.dev.peekDefinition",
+					"group": "peek_group_1",
+					"when": "better-touch-bar:menu == 'peek'"
+				},
+				{
+					"command": "better-touch-bar.dev.peekTypeDefinition",
+					"group": "peek_group_1",
+					"when": "better-touch-bar:menu == 'peek'"
+				},
+				{
+					"command": "better-touch-bar.dev.peekImplementations",
+					"group": "peek_group_2",
+					"when": "better-touch-bar:menu == 'peek'"
+				},
+				{
+					"command": "better-touch-bar.dev.peekReferences",
+					"group": "peek_group_2",
+					"when": "better-touch-bar:menu == 'peek'"
 				},
 				{
 					"command": "better-touch-bar.dev.quickFix",

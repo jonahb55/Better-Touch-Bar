@@ -108,15 +108,35 @@ function activate(context) {
 		vscode.commands.executeCommand("git.sync");
 	});
 
-	let quickFix = vscode.commands.registerCommand('better-touch-bar.dev.quickFix', function () {
-		vscode.commands.executeCommand("editor.action.quickFix");
+	let peek = vscode.commands.registerCommand('better-touch-bar.dev.peek', function () {
+		openMenu("peek")
+	});
+
+	let peekDefinition = vscode.commands.registerCommand('better-touch-bar.dev.peekDefinition', function () {
+		vscode.commands.executeCommand("editor.action.peekDefinition");
+		openMenu("main")
+	});
+
+	let peekTypeDefinition = vscode.commands.registerCommand('better-touch-bar.dev.peekTypeDefinition', function () {
+		vscode.commands.executeCommand("editor.action.peekTypeDefinition");
+		openMenu("main")
+	});
+
+	let peekImplementations = vscode.commands.registerCommand('better-touch-bar.dev.peekImplementations', function () {
+		vscode.commands.executeCommand("editor.action.peekImplementation");
+		openMenu("main")
+	});
+
+	let peekReferences = vscode.commands.registerCommand('better-touch-bar.dev.peekReferences', function () {
+		vscode.commands.executeCommand("editor.action.referenceSearch.trigger");
+		openMenu("main")
 	});
 
 	let suggest = vscode.commands.registerCommand('better-touch-bar.dev.suggest', function () {
 		vscode.commands.executeCommand("editor.action.triggerSuggest");
 	});
 
-	context.subscriptions.push(previousTab, nextTab, cancel, runMain, runBuild, runDeploy, runStartRioLog, runSimulate, runStartTool, branch, checkout, merge, reset, pop, stash, showChanges, sync, quickFix, suggest);
+	context.subscriptions.push(previousTab, nextTab, cancel, runMain, runBuild, runDeploy, runStartRioLog, runSimulate, runStartTool, branch, checkout, merge, reset, pop, stash, showChanges, sync, peek, peekDefinition, peekTypeDefinition, peekImplementations, peekReferences, suggest);
 }
 exports.activate = activate;
 
