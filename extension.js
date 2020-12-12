@@ -132,11 +132,11 @@ function activate(context) {
 		openMenu("main")
 	});
 
-	let suggest = vscode.commands.registerCommand('better-touch-bar.dev.suggest', function () {
-		vscode.commands.executeCommand("editor.action.triggerSuggest");
+	let quickFix = vscode.commands.registerCommand('better-touch-bar.dev.quickFix', function () {
+		vscode.commands.executeCommand("editor.action.quickFix");
 	});
 
-	context.subscriptions.push(previousTab, nextTab, cancel, runMain, runBuild, runDeploy, runStartRioLog, runSimulate, runStartTool, branch, checkout, merge, reset, pop, stash, showChanges, sync, peek, peekDefinition, peekTypeDefinition, peekImplementations, peekReferences, suggest);
+	context.subscriptions.push(previousTab, nextTab, cancel, runMain, runBuild, runDeploy, runStartRioLog, runSimulate, runStartTool, branch, checkout, merge, reset, pop, stash, showChanges, sync, peek, peekDefinition, peekTypeDefinition, peekImplementations, peekReferences, quickFix);
 }
 exports.activate = activate;
 
