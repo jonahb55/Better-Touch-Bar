@@ -76,6 +76,10 @@ function activate(context) {
 		openMenu("main")
 	});
 
+	let displayGit = vscode.commands.registerCommand('better-touch-bar.git.display', function () {
+		vscode.commands.executeCommand("workbench.scm.focus");
+	});
+
 	let branch = vscode.commands.registerCommand('better-touch-bar.git.branch', function () {
 		openMenu("git")
 	});
@@ -100,12 +104,12 @@ function activate(context) {
 		vscode.commands.executeCommand("git.stash");
 	});
 
-	let showChanges = vscode.commands.registerCommand('better-touch-bar.git.showChanges', function () {
-		vscode.commands.executeCommand("git.openChange");
-	});
-
 	let sync = vscode.commands.registerCommand('better-touch-bar.git.sync', function () {
 		vscode.commands.executeCommand("git.sync");
+	});
+
+	let rename = vscode.commands.registerCommand('better-touch-bar.dev.rename', function () {
+		vscode.commands.executeCommand("editor.action.rename");
 	});
 
 	let peek = vscode.commands.registerCommand('better-touch-bar.dev.peek', function () {
@@ -136,7 +140,7 @@ function activate(context) {
 		vscode.commands.executeCommand("editor.action.quickFix");
 	});
 
-	context.subscriptions.push(previousTab, nextTab, cancel, runMain, runBuild, runDeploy, runStartRioLog, runSimulate, runStartTool, branch, checkout, merge, reset, pop, stash, showChanges, sync, peek, peekDefinition, peekTypeDefinition, peekImplementations, peekReferences, quickFix);
+	context.subscriptions.push(previousTab, nextTab, cancel, runMain, runBuild, runDeploy, runStartRioLog, runSimulate, runStartTool, displayGit, branch, checkout, merge, reset, pop, stash, sync, rename, peek, peekDefinition, peekTypeDefinition, peekImplementations, peekReferences, quickFix);
 }
 exports.activate = activate;
 

@@ -55,6 +55,11 @@
 				"title": "Start Tool"
 			},
 			{
+				"command": "better-touch-bar.git.display",
+				"title": "1-Display",
+				"icon": "./assets/git.png"
+			},
+			{
 				"command": "better-touch-bar.git.branch",
 				"title": "Branch..."
 			},
@@ -79,16 +84,16 @@
 				"title": "Stash"
 			},
 			{
-				"command": "better-touch-bar.git.showChanges",
-				"title": "Changes"
-			},
-			{
 				"command": "better-touch-bar.git.sync",
 				"title": "Sync"
 			},
 			{
+				"command": "better-touch-bar.dev.rename",
+				"title": "📝"
+			},
+			{
 				"command": "better-touch-bar.dev.peek",
-				"title": "🧐"
+				"title": "🔍"
 			},
 			{
 				"command": "better-touch-bar.dev.peekDefinition",
@@ -150,6 +155,10 @@
 					"when": "false"
 				},
 				{
+					"command": "better-touch-bar.git.display",
+					"when": "false"
+				},
+				{
 					"command": "better-touch-bar.git.branch",
 					"when": "false"
 				},
@@ -174,11 +183,11 @@
 					"when": "false"
 				},
 				{
-					"command": "better-touch-bar.git.showChanges",
+					"command": "better-touch-bar.git.sync",
 					"when": "false"
 				},
 				{
-					"command": "better-touch-bar.git.sync",
+					"command": "better-touch-bar.dev.rename",
 					"when": "false"
 				},
 				{
@@ -251,6 +260,11 @@
 					"when": "better-touch-bar:menu == 'run'"
 				},
 				{
+					"command": "better-touch-bar.git.display",
+					"group": "group_2",
+					"when": "better-touch-bar:menu == 'main'"
+				},
+				{
 					"command": "better-touch-bar.git.branch",
 					"group": "group_2",
 					"when": "better-touch-bar:menu == 'main'"
@@ -281,13 +295,13 @@
 					"when": "better-touch-bar:menu == 'git'"
 				},
 				{
-					"command": "better-touch-bar.git.showChanges",
+					"command": "better-touch-bar.git.sync",
 					"group": "group_2",
 					"when": "better-touch-bar:menu == 'main'"
 				},
 				{
-					"command": "better-touch-bar.git.sync",
-					"group": "group_2",
+					"command": "better-touch-bar.dev.rename",
+					"group": "group_3",
 					"when": "better-touch-bar:menu == 'main'"
 				},
 				{
