@@ -232,7 +232,7 @@
 				{
 					"command": "better-touch-bar.run.main",
 					"group": "group_1",
-					"when": "better-touch-bar:menu == 'main' && !isDebugMode"
+					"when": "better-touch-bar:menu == 'main' && !inDebugMode"
 				},
 				{
 					"command": "better-touch-bar.run.build",

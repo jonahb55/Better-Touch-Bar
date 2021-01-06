@@ -22,7 +22,7 @@ function activate(context) {
 	console.log('Congratulations, your extension "better-touch-bar" is now active!');
 
 	// Remove default buttons
-	userConfig.update("keyboard.touchbar.ignored", ["workbench.action.navigateBack", "workbench.action.navigateForward", "workbench.action.debug.start", "workbench.action.debug.run", "workbench.action.debug.pause", "workbench.action.debug.stepOver", "workbench.action.debug.stepInto", "workbench.action.debug.stepOut", "workbench.action.debug.stop"], true)
+	userConfig.update("keyboard.touchbar.ignored", ["workbench.action.navigateBack", "workbench.action.navigateForward", "workbench.action.debug.start", "workbench.action.debug.run", "workbench.action.debug.pause", "workbench.action.debug.stepOver", "workbench.action.debug.stepInto", "workbench.action.debug.stepOut", "workbench.action.debug.restart"], true)
 	openMenu("main")
 
 	// The command has been defined in the package.json file
