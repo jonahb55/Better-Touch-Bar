@@ -262,7 +262,7 @@
 				{
 					"command": "better-touch-bar.git.display",
 					"group": "group_2",
-					"when": "better-touch-bar:menu == 'main'"
+					"when": "better-touch-bar:menu == 'main' && !inDebugMode"
 				},
 				{
 					"command": "better-touch-bar.git.branch",
