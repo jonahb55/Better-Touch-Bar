@@ -112,27 +112,27 @@ function activate(context) {
 		vscode.commands.executeCommand("editor.action.rename");
 	});
 
-	let peek = vscode.commands.registerCommand('better-touch-bar.dev.peek', function () {
-		openMenu("peek")
+	let find = vscode.commands.registerCommand('better-touch-bar.dev.find', function () {
+		openMenu("find")
 	});
 
-	let peekDefinition = vscode.commands.registerCommand('better-touch-bar.dev.peekDefinition', function () {
-		vscode.commands.executeCommand("editor.action.peekDefinition");
+	let findDefinition = vscode.commands.registerCommand('better-touch-bar.dev.findDefinition', function () {
+		vscode.commands.executeCommand("editor.action.revealDefinition");
 		openMenu("main")
 	});
 
-	let peekTypeDefinition = vscode.commands.registerCommand('better-touch-bar.dev.peekTypeDefinition', function () {
-		vscode.commands.executeCommand("editor.action.peekTypeDefinition");
+	let findTypeDefinition = vscode.commands.registerCommand('better-touch-bar.dev.findTypeDefinition', function () {
+		vscode.commands.executeCommand("editor.action.goToTypeDefinition");
 		openMenu("main")
 	});
 
-	let peekImplementations = vscode.commands.registerCommand('better-touch-bar.dev.peekImplementations', function () {
-		vscode.commands.executeCommand("editor.action.peekImplementation");
+	let findImplementations = vscode.commands.registerCommand('better-touch-bar.dev.findImplementations', function () {
+		vscode.commands.executeCommand("editor.action.goToImplementation");
 		openMenu("main")
 	});
 
-	let peekReferences = vscode.commands.registerCommand('better-touch-bar.dev.peekReferences', function () {
-		vscode.commands.executeCommand("editor.action.referenceSearch.trigger");
+	let findReferences = vscode.commands.registerCommand('better-touch-bar.dev.findReferences', function () {
+		vscode.commands.executeCommand("editor.action.goToReferences");
 		openMenu("main")
 	});
 
@@ -140,7 +140,7 @@ function activate(context) {
 		vscode.commands.executeCommand("editor.action.quickFix");
 	});
 
-	context.subscriptions.push(previousTab, nextTab, cancel, runMain, runBuild, runDeploy, runStartRioLog, runSimulate, runStartTool, displayGit, branch, checkout, merge, reset, pop, stash, sync, rename, peek, peekDefinition, peekTypeDefinition, peekImplementations, peekReferences, quickFix);
+	context.subscriptions.push(previousTab, nextTab, cancel, runMain, runBuild, runDeploy, runStartRioLog, runSimulate, runStartTool, displayGit, branch, checkout, merge, reset, pop, stash, sync, rename, find, findDefinition, findTypeDefinition, findImplementations, findReferences, quickFix);
 }
 exports.activate = activate;
 

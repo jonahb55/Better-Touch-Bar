@@ -92,23 +92,23 @@
 				"title": "📝"
 			},
 			{
-				"command": "better-touch-bar.dev.peek",
+				"command": "better-touch-bar.dev.find",
 				"title": "🔍"
 			},
 			{
-				"command": "better-touch-bar.dev.peekDefinition",
+				"command": "better-touch-bar.dev.findDefinition",
 				"title": "Definition"
 			},
 			{
-				"command": "better-touch-bar.dev.peekTypeDefinition",
+				"command": "better-touch-bar.dev.findTypeDefinition",
 				"title": "Type Def"
 			},
 			{
-				"command": "better-touch-bar.dev.peekImplementations",
+				"command": "better-touch-bar.dev.findImplementations",
 				"title": "Implements"
 			},
 			{
-				"command": "better-touch-bar.dev.peekReferences",
+				"command": "better-touch-bar.dev.findReferences",
 				"title": "References"
 			},
 			{
@@ -191,23 +191,23 @@
 					"when": "false"
 				},
 				{
-					"command": "better-touch-bar.dev.peek",
+					"command": "better-touch-bar.dev.find",
 					"when": "false"
 				},
 				{
-					"command": "better-touch-bar.dev.peekDefinition",
+					"command": "better-touch-bar.dev.findDefinition",
 					"when": "false"
 				},
 				{
-					"command": "better-touch-bar.dev.peekTypeDefinition",
+					"command": "better-touch-bar.dev.findTypeDefinition",
 					"when": "false"
 				},
 				{
-					"command": "better-touch-bar.dev.peekImplementations",
+					"command": "better-touch-bar.dev.findImplementations",
 					"when": "false"
 				},
 				{
-					"command": "better-touch-bar.dev.peekReferences",
+					"command": "better-touch-bar.dev.findReferences",
 					"when": "false"
 				},
 				{
@@ -227,7 +227,7 @@
 				{
 					"command": "better-touch-bar.cancel",
 					"group": "cancel",
-					"when": "better-touch-bar:menu == 'run' || better-touch-bar:menu == 'git' || better-touch-bar:menu == 'peek'"
+					"when": "better-touch-bar:menu == 'run' || better-touch-bar:menu == 'git' || better-touch-bar:menu == 'find'"
 				},
 				{
 					"command": "better-touch-bar.run.main",
@@ -305,29 +305,29 @@
 					"when": "better-touch-bar:menu == 'main'"
 				},
 				{
-					"command": "better-touch-bar.dev.peek",
+					"command": "better-touch-bar.dev.find",
 					"group": "group_3",
 					"when": "better-touch-bar:menu == 'main'"
 				},
 				{
-					"command": "better-touch-bar.dev.peekDefinition",
-					"group": "peek_group_1",
-					"when": "better-touch-bar:menu == 'peek'"
+					"command": "better-touch-bar.dev.findDefinition",
+					"group": "find_group_1",
+					"when": "better-touch-bar:menu == 'find'"
 				},
 				{
-					"command": "better-touch-bar.dev.peekTypeDefinition",
-					"group": "peek_group_1",
-					"when": "better-touch-bar:menu == 'peek'"
+					"command": "better-touch-bar.dev.findTypeDefinition",
+					"group": "find_group_1",
+					"when": "better-touch-bar:menu == 'find'"
 				},
 				{
-					"command": "better-touch-bar.dev.peekImplementations",
-					"group": "peek_group_2",
-					"when": "better-touch-bar:menu == 'peek'"
+					"command": "better-touch-bar.dev.findImplementations",
+					"group": "find_group_2",
+					"when": "better-touch-bar:menu == 'find'"
 				},
 				{
-					"command": "better-touch-bar.dev.peekReferences",
-					"group": "peek_group_2",
-					"when": "better-touch-bar:menu == 'peek'"
+					"command": "better-touch-bar.dev.findReferences",
+					"group": "find_group_2",
+					"when": "better-touch-bar:menu == 'find'"
 				},
 				{
 					"command": "better-touch-bar.dev.quickFix",
