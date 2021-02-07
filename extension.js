@@ -77,10 +77,7 @@ function activate(context) {
 	});
 
 	let displayGit = vscode.commands.registerCommand('better-touch-bar.git.display', function () {
-		vscode.commands.executeCommand("workbench.scm.focus");
-		setTimeout(() => {
-			vscode.commands.executeCommand('workbench.action.quickOpen', '>Git ');
-		}, 0);
+		vscode.commands.executeCommand('workbench.action.quickOpen', '>Git ');
 	});
 
 	let branch = vscode.commands.registerCommand('better-touch-bar.git.branch', function () {
