@@ -5,7 +5,7 @@
 ![Screenshot of source control menu](https://raw.githubusercontent.com/jonahb55/Better-Touch-Bar/master/screenshots/3-git.png)
 ![Screenshot of code editing menu](https://raw.githubusercontent.com/jonahb55/Better-Touch-Bar/master/screenshots/4-dev.png)
 
-A VSCode extension which adds useful functions to the touch bar, including:
+A VSCode extension which adds useful functions to the Touch Bar, including:
 
 - Improved tab navigation (based on position rather than last opened)
 - Simplified interface for running code
