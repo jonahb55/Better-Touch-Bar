@@ -35,24 +35,40 @@
 				"icon": "./assets/run.png"
 			},
 			{
-				"command": "better-touch-bar.run.build",
+				"command": "better-touch-bar.run.wpilib.build",
 				"title": "Build"
 			},
 			{
-				"command": "better-touch-bar.run.deploy",
+				"command": "better-touch-bar.run.wpilib.deploy",
 				"title": "Deploy"
 			},
 			{
-				"command": "better-touch-bar.run.startRioLog",
+				"command": "better-touch-bar.run.wpilib.startRioLog",
 				"title": "RioLog"
 			},
 			{
-				"command": "better-touch-bar.run.simulate",
+				"command": "better-touch-bar.run.wpilib.simulate",
 				"title": "Simulate"
 			},
 			{
-				"command": "better-touch-bar.run.startTool",
+				"command": "better-touch-bar.run.wpilib.startTool",
 				"title": "Start Tool"
+			},
+			{
+				"command": "better-touch-bar.run.arduino.build",
+				"title": "Build"
+			},
+			{
+				"command": "better-touch-bar.run.arduino.deploy",
+				"title": "Deploy"
+			},
+			{
+				"command": "better-touch-bar.run.arduino.libraries",
+				"title": "Libraries"
+			},
+			{
+				"command": "better-touch-bar.run.arduino.serialMonitor",
+				"title": "Serial Monitor"
 			},
 			{
 				"command": "better-touch-bar.git.display",
@@ -135,23 +151,39 @@
 					"when": "false"
 				},
 				{
-					"command": "better-touch-bar.run.build",
+					"command": "better-touch-bar.run.wpilib.build",
 					"when": "false"
 				},
 				{
-					"command": "better-touch-bar.run.deploy",
+					"command": "better-touch-bar.run.wpilib.deploy",
 					"when": "false"
 				},
 				{
-					"command": "better-touch-bar.run.startRioLog",
+					"command": "better-touch-bar.run.wpilib.startRioLog",
 					"when": "false"
 				},
 				{
-					"command": "better-touch-bar.run.simulate",
+					"command": "better-touch-bar.run.wpilib.simulate",
 					"when": "false"
 				},
 				{
-					"command": "better-touch-bar.run.startTool",
+					"command": "better-touch-bar.run.wpilib.startTool",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.run.arduino.build",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.run.arduino.deploy",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.run.arduino.libraries",
+					"when": "false"
+				},
+				{
+					"command": "better-touch-bar.run.arduino.serialMonitor",
 					"when": "false"
 				},
 				{
@@ -227,7 +259,7 @@
 				{
 					"command": "better-touch-bar.cancel",
 					"group": "cancel",
-					"when": "better-touch-bar:menu == 'run' || better-touch-bar:menu == 'git' || better-touch-bar:menu == 'find'"
+					"when": "better-touch-bar:menu == 'run-wpilib' || better-touch-bar:menu == 'run-arduino' || better-touch-bar:menu == 'git' || better-touch-bar:menu == 'find'"
 				},
 				{
 					"command": "better-touch-bar.run.main",
@@ -235,29 +267,49 @@
 					"when": "better-touch-bar:menu == 'main' && !inDebugMode"
 				},
 				{
-					"command": "better-touch-bar.run.build",
+					"command": "better-touch-bar.run.wpilib.build",
 					"group": "run_group_1",
-					"when": "better-touch-bar:menu == 'run'"
+					"when": "better-touch-bar:menu == 'run-wpilib'"
 				},
 				{
-					"command": "better-touch-bar.run.deploy",
+					"command": "better-touch-bar.run.wpilib.deploy",
 					"group": "run_group_1",
-					"when": "better-touch-bar:menu == 'run'"
+					"when": "better-touch-bar:menu == 'run-wpilib'"
 				},
 				{
-					"command": "better-touch-bar.run.startRioLog",
+					"command": "better-touch-bar.run.wpilib.startRioLog",
 					"group": "run_group_1",
-					"when": "better-touch-bar:menu == 'run'"
+					"when": "better-touch-bar:menu == 'run-wpilib'"
 				},
 				{
-					"command": "better-touch-bar.run.simulate",
+					"command": "better-touch-bar.run.wpilib.simulate",
 					"group": "run_group_1",
-					"when": "better-touch-bar:menu == 'run'"
+					"when": "better-touch-bar:menu == 'run-wpilib'"
 				},
 				{
-					"command": "better-touch-bar.run.startTool",
+					"command": "better-touch-bar.run.wpilib.startTool",
 					"group": "run_group_1",
-					"when": "better-touch-bar:menu == 'run'"
+					"when": "better-touch-bar:menu == 'run-wpilib'"
+				},
+				{
+					"command": "better-touch-bar.run.arduino.build",
+					"group": "run_group_1",
+					"when": "better-touch-bar:menu == 'run-arduino'"
+				},
+				{
+					"command": "better-touch-bar.run.arduino.deploy",
+					"group": "run_group_1",
+					"when": "better-touch-bar:menu == 'run-arduino'"
+				},
+				{
+					"command": "better-touch-bar.run.arduino.libraries",
+					"group": "run_group_1",
+					"when": "better-touch-bar:menu == 'run-arduino'"
+				},
+				{
+					"command": "better-touch-bar.run.arduino.serialMonitor",
+					"group": "run_group_1",
+					"when": "better-touch-bar:menu == 'run-arduino'"
 				},
 				{
 					"command": "better-touch-bar.git.display",

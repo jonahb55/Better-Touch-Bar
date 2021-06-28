@@ -44,35 +44,59 @@ function activate(context) {
 		let folders = vscode.workspace.workspaceFolders
 		if (folders != undefined) {
 			if (fs.existsSync(folders[0].uri.fsPath + "/.wpilib")) {
-				openMenu("run")
+				openMenu("run-wpilib")
 				return;
 			}
+		}
+		if (vscode.window.activeTextEditor.document.uri.toString().endsWith(".ino")) {
+			openMenu("run-arduino")
+			return;
 		}
 		vscode.commands.executeCommand("workbench.action.debug.run");
 	});
 
-	let runBuild = vscode.commands.registerCommand('better-touch-bar.run.build', function () {
+	let runWPILibBuild = vscode.commands.registerCommand('better-touch-bar.run.wpilib.build', function () {
 		vscode.commands.executeCommand("wpilibcore.buildCode");
 		openMenu("main")
 	});
 
-	let runDeploy = vscode.commands.registerCommand('better-touch-bar.run.deploy', function () {
+	let runWPILibDeploy = vscode.commands.registerCommand('better-touch-bar.run.wpilib.deploy', function () {
 		vscode.commands.executeCommand("wpilibcore.deployCode");
 		openMenu("main")
 	});
 
-	let runStartRioLog = vscode.commands.registerCommand('better-touch-bar.run.startRioLog', function () {
+	let runWPILibStartRioLog = vscode.commands.registerCommand('better-touch-bar.run.wpilib.startRioLog', function () {
 		vscode.commands.executeCommand("wpilibcore.startRioLog");
 		openMenu("main")
 	});
 
-	let runSimulate = vscode.commands.registerCommand('better-touch-bar.run.simulate', function () {
+	let runWPILibSimulate = vscode.commands.registerCommand('better-touch-bar.run.wpilib.simulate', function () {
 		vscode.commands.executeCommand("wpilibcore.simulateCode");
 		openMenu("main")
 	});
 
-	let runStartTool = vscode.commands.registerCommand('better-touch-bar.run.startTool', function () {
+	let runWPILibStartTool = vscode.commands.registerCommand('better-touch-bar.run.wpilib.startTool', function () {
 		vscode.commands.executeCommand("wpilibcore.startTool");
+		openMenu("main")
+	});
+
+	let runArduinoBuild = vscode.commands.registerCommand('better-touch-bar.run.arduino.build', function () {
+		vscode.commands.executeCommand("arduino.verify");
+		openMenu("main")
+	});
+
+	let runArduinoDeploy = vscode.commands.registerCommand('better-touch-bar.run.arduino.deploy', function () {
+		vscode.commands.executeCommand("arduino.upload");
+		openMenu("main")
+	});
+
+	let runArduinoLibraries = vscode.commands.registerCommand('better-touch-bar.run.arduino.libraries', function () {
+		vscode.commands.executeCommand("arduino.showLibraryManager");
+		openMenu("main")
+	});
+
+	let runArduinoSerialMonitor = vscode.commands.registerCommand('better-touch-bar.run.arduino.serialMonitor', function () {
+		vscode.commands.executeCommand("arduino.openSerialMonitor");
 		openMenu("main")
 	});
 
@@ -140,8 +164,9 @@ function activate(context) {
 		vscode.commands.executeCommand("editor.action.quickFix");
 	});
 
-	context.subscriptions.push(previousTab, nextTab, cancel, runMain, runBuild, runDeploy, runStartRioLog, runSimulate, runStartTool, displayGit, branch, checkout, merge, reset, pop, stash, sync, rename, find, findDefinition, findTypeDefinition, findImplementations, findReferences, quickFix);
+	context.subscriptions.push(previousTab, nextTab, cancel, runMain, runWPILibBuild, runWPILibDeploy, runWPILibStartRioLog, runWPILibSimulate, runWPILibStartTool, runArduinoBuild, runArduinoDeploy, runArduinoLibraries, runArduinoSerialMonitor, displayGit, branch, checkout, merge, reset, pop, stash, sync, rename, find, findDefinition, findTypeDefinition, findImplementations, findReferences, quickFix);
 }
+// @ts-ignore
 exports.activate = activate;
 
 // this method is called when your extension is deactivated
