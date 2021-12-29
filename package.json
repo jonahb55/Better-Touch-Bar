@@ -71,8 +71,8 @@
 				"title": "Serial Monitor"
 			},
 			{
-				"command": "better-touch-bar.git.display",
-				"title": "1-Display",
+				"command": "better-touch-bar.git.stage",
+				"title": "1-Stage",
 				"icon": "./assets/git.png"
 			},
 			{
@@ -187,7 +187,7 @@
 					"when": "false"
 				},
 				{
-					"command": "better-touch-bar.git.display",
+					"command": "better-touch-bar.git.stage",
 					"when": "false"
 				},
 				{
@@ -312,7 +312,7 @@
 					"when": "better-touch-bar:menu == 'run-arduino'"
 				},
 				{
-					"command": "better-touch-bar.git.display",
+					"command": "better-touch-bar.git.stage",
 					"group": "group_2",
 					"when": "better-touch-bar:menu == 'main' && !inDebugMode"
 				},
