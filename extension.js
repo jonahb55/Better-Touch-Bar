@@ -1,12 +1,9 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-const vscode = require('vscode');
-const fs = require('fs');
+const vscode = require("vscode")
+const fs = require("fs")
+const cp = require("child_process")
 
-const userConfig = vscode.workspace.getConfiguration();
-
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
+const wpilibEventBranchPrefix = "event"
+const userConfig = vscode.workspace.getConfiguration()
 
 /**
  * @param {vscode.ExtensionContext} context
@@ -14,163 +11,162 @@ const userConfig = vscode.workspace.getConfiguration();
 function activate(context) {
 
 	function openMenu(menu) {
-		vscode.commands.executeCommand("setContext", "better-touch-bar:menu", menu);
+		vscode.commands.executeCommand("setContext", "better-touch-bar:menu", menu)
 	}
-
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "better-touch-bar" is now active!');
 
 	// Remove default buttons
 	userConfig.update("keyboard.touchbar.ignored", ["workbench.action.navigateBack", "workbench.action.navigateForward", "workbench.action.debug.start", "workbench.action.debug.run", "workbench.action.debug.pause", "workbench.action.debug.stepOver", "workbench.action.debug.stepInto", "workbench.action.debug.stepOut"], true)
 	openMenu("main")
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with  registerCommand
-	// The commandId parameter must match the command field in package.json
-	let previousTab = vscode.commands.registerCommand('better-touch-bar.tabNav.previous', function () {
-		vscode.commands.executeCommand("workbench.action.previousEditorInGroup");
-	});
+	let previousTab = vscode.commands.registerCommand("better-touch-bar.tabNav.previous", function () {
+		vscode.commands.executeCommand("workbench.action.previousEditorInGroup")
+	})
 
-	let nextTab = vscode.commands.registerCommand('better-touch-bar.tabNav.next', function () {
-		vscode.commands.executeCommand("workbench.action.nextEditorInGroup");
-	});
+	let nextTab = vscode.commands.registerCommand("better-touch-bar.tabNav.next", function () {
+		vscode.commands.executeCommand("workbench.action.nextEditorInGroup")
+	})
 
-	let cancel = vscode.commands.registerCommand('better-touch-bar.cancel', function () {
+	let cancel = vscode.commands.registerCommand("better-touch-bar.cancel", function () {
 		openMenu("main")
-	});
+	})
 
-	let runMain = vscode.commands.registerCommand('better-touch-bar.run.main', function () {
+	let runMain = vscode.commands.registerCommand("better-touch-bar.run.main", function () {
 		let folders = vscode.workspace.workspaceFolders
 		if (folders != undefined) {
 			if (fs.existsSync(folders[0].uri.fsPath + "/.wpilib")) {
-				openMenu("run-wpilib")
-				return;
+				cp.exec("git branch --show-current", { cwd: vscode.workspace.workspaceFolders[0].uri.fsPath }, (err, stdout, stderr) => {
+					vscode.commands.executeCommand("setContext", "better-touch-bar:wpilib-event", stdout.startsWith(wpilibEventBranchPrefix))
+					openMenu("run-wpilib")
+				})
+				return
 			}
 		}
 		if (vscode.window.activeTextEditor.document.uri.toString().endsWith(".ino")) {
 			openMenu("run-arduino")
-			return;
+			return
 		}
-		vscode.commands.executeCommand("workbench.action.debug.run");
-	});
+		vscode.commands.executeCommand("workbench.action.debug.run")
+	})
 
-	let runWPILibBuild = vscode.commands.registerCommand('better-touch-bar.run.wpilib.build', function () {
-		vscode.commands.executeCommand("wpilibcore.buildCode");
+	let runWPILibBuild = vscode.commands.registerCommand("better-touch-bar.run.wpilib.build", function () {
+		vscode.commands.executeCommand("wpilibcore.buildCode")
 		openMenu("main")
-	});
+	})
 
-	let runWPILibDeploy = vscode.commands.registerCommand('better-touch-bar.run.wpilib.deploy', function () {
-		vscode.commands.executeCommand("wpilibcore.deployCode");
+	let runWPILibDeploy = vscode.commands.registerCommand("better-touch-bar.run.wpilib.deploy", function () {
+		vscode.commands.executeCommand("wpilibcore.deployCode")
 		openMenu("main")
-	});
+	})
 
-	let runWPILibStartRioLog = vscode.commands.registerCommand('better-touch-bar.run.wpilib.startRioLog', function () {
-		vscode.commands.executeCommand("wpilibcore.startRioLog");
+	let runWPILibDeployEvent = vscode.commands.registerCommand("better-touch-bar.run.wpilib.deployEvent", function () {
+		vscode.commands.executeCommand("wpilib-quick-commit.deploy")
 		openMenu("main")
-	});
+	})
 
-	let runWPILibSimulate = vscode.commands.registerCommand('better-touch-bar.run.wpilib.simulate', function () {
-		vscode.commands.executeCommand("wpilibcore.simulateCode");
+	let runWPILibStartRioLog = vscode.commands.registerCommand("better-touch-bar.run.wpilib.startRioLog", function () {
+		vscode.commands.executeCommand("wpilibcore.startRioLog")
 		openMenu("main")
-	});
+	})
 
-	let runWPILibStartTool = vscode.commands.registerCommand('better-touch-bar.run.wpilib.startTool', function () {
-		vscode.commands.executeCommand("wpilibcore.startTool");
+	let runWPILibSimulate = vscode.commands.registerCommand("better-touch-bar.run.wpilib.simulate", function () {
+		vscode.commands.executeCommand("wpilibcore.simulateCode")
 		openMenu("main")
-	});
+	})
 
-	let runArduinoBuild = vscode.commands.registerCommand('better-touch-bar.run.arduino.build', function () {
-		vscode.commands.executeCommand("arduino.verify");
+	let runWPILibStartTool = vscode.commands.registerCommand("better-touch-bar.run.wpilib.startTool", function () {
+		vscode.commands.executeCommand("wpilibcore.startTool")
 		openMenu("main")
-	});
+	})
 
-	let runArduinoDeploy = vscode.commands.registerCommand('better-touch-bar.run.arduino.deploy', function () {
-		vscode.commands.executeCommand("arduino.upload");
+	let runArduinoBuild = vscode.commands.registerCommand("better-touch-bar.run.arduino.build", function () {
+		vscode.commands.executeCommand("arduino.verify")
 		openMenu("main")
-	});
+	})
 
-	let runArduinoLibraries = vscode.commands.registerCommand('better-touch-bar.run.arduino.libraries', function () {
-		vscode.commands.executeCommand("arduino.showLibraryManager");
+	let runArduinoDeploy = vscode.commands.registerCommand("better-touch-bar.run.arduino.deploy", function () {
+		vscode.commands.executeCommand("arduino.upload")
 		openMenu("main")
-	});
+	})
 
-	let runArduinoSerialMonitor = vscode.commands.registerCommand('better-touch-bar.run.arduino.serialMonitor', function () {
-		vscode.commands.executeCommand("arduino.openSerialMonitor");
+	let runArduinoLibraries = vscode.commands.registerCommand("better-touch-bar.run.arduino.libraries", function () {
+		vscode.commands.executeCommand("arduino.showLibraryManager")
 		openMenu("main")
-	});
+	})
 
-	let displayGit = vscode.commands.registerCommand('better-touch-bar.git.stage', function () {
-		vscode.commands.executeCommand("workbench.scm.focus");
-		vscode.commands.executeCommand("git.stageAll");
-	});
+	let runArduinoSerialMonitor = vscode.commands.registerCommand("better-touch-bar.run.arduino.serialMonitor", function () {
+		vscode.commands.executeCommand("arduino.openSerialMonitor")
+		openMenu("main")
+	})
 
-	let branch = vscode.commands.registerCommand('better-touch-bar.git.branch', function () {
+	let displayGit = vscode.commands.registerCommand("better-touch-bar.git.open", function () {
+		vscode.commands.executeCommand("workbench.scm.focus")
+	})
+
+	let branch = vscode.commands.registerCommand("better-touch-bar.git.branch", function () {
 		openMenu("git")
-	});
+	})
 
-	let checkout = vscode.commands.registerCommand('better-touch-bar.git.checkout', function () {
-		vscode.commands.executeCommand("git.checkout");
-	});
+	let checkout = vscode.commands.registerCommand("better-touch-bar.git.checkout", function () {
+		vscode.commands.executeCommand("git.checkout")
+	})
 
-	let merge = vscode.commands.registerCommand('better-touch-bar.git.merge', function () {
-		vscode.commands.executeCommand("git.merge");
-	});
+	let merge = vscode.commands.registerCommand("better-touch-bar.git.merge", function () {
+		vscode.commands.executeCommand("git.merge")
+	})
 
-	let reset = vscode.commands.registerCommand('better-touch-bar.git.reset', function () {
-		vscode.commands.executeCommand("git.cleanAll");
-	});
+	let reset = vscode.commands.registerCommand("better-touch-bar.git.reset", function () {
+		vscode.commands.executeCommand("git.cleanAll")
+	})
 
-	let pop = vscode.commands.registerCommand('better-touch-bar.git.pop', function () {
-		vscode.commands.executeCommand("git.stashPopLatest");
-	});
+	let pop = vscode.commands.registerCommand("better-touch-bar.git.pop", function () {
+		vscode.commands.executeCommand("git.stashPopLatest")
+	})
 
-	let stash = vscode.commands.registerCommand('better-touch-bar.git.stash', function () {
-		vscode.commands.executeCommand("git.stash");
-	});
+	let stash = vscode.commands.registerCommand("better-touch-bar.git.stash", function () {
+		vscode.commands.executeCommand("git.stash")
+	})
 
-	let sync = vscode.commands.registerCommand('better-touch-bar.git.sync', function () {
-		vscode.commands.executeCommand("git.sync");
-	});
+	let sync = vscode.commands.registerCommand("better-touch-bar.git.sync", function () {
+		vscode.commands.executeCommand("git.sync")
+	})
 
-	let rename = vscode.commands.registerCommand('better-touch-bar.dev.rename', function () {
-		vscode.commands.executeCommand("editor.action.rename");
-	});
+	let rename = vscode.commands.registerCommand("better-touch-bar.dev.rename", function () {
+		vscode.commands.executeCommand("editor.action.rename")
+	})
 
-	let find = vscode.commands.registerCommand('better-touch-bar.dev.find', function () {
+	let find = vscode.commands.registerCommand("better-touch-bar.dev.find", function () {
 		openMenu("find")
-	});
+	})
 
-	let findDefinition = vscode.commands.registerCommand('better-touch-bar.dev.findDefinition', function () {
-		vscode.commands.executeCommand("editor.action.revealDefinition");
+	let findDefinition = vscode.commands.registerCommand("better-touch-bar.dev.findDefinition", function () {
+		vscode.commands.executeCommand("editor.action.revealDefinition")
 		openMenu("main")
-	});
+	})
 
-	let findTypeDefinition = vscode.commands.registerCommand('better-touch-bar.dev.findTypeDefinition', function () {
-		vscode.commands.executeCommand("editor.action.goToTypeDefinition");
+	let findTypeDefinition = vscode.commands.registerCommand("better-touch-bar.dev.findTypeDefinition", function () {
+		vscode.commands.executeCommand("editor.action.goToTypeDefinition")
 		openMenu("main")
-	});
+	})
 
-	let findImplementations = vscode.commands.registerCommand('better-touch-bar.dev.findImplementations', function () {
-		vscode.commands.executeCommand("editor.action.goToImplementation");
+	let findImplementations = vscode.commands.registerCommand("better-touch-bar.dev.findImplementations", function () {
+		vscode.commands.executeCommand("editor.action.goToImplementation")
 		openMenu("main")
-	});
+	})
 
-	let findReferences = vscode.commands.registerCommand('better-touch-bar.dev.findReferences', function () {
-		vscode.commands.executeCommand("editor.action.goToReferences");
+	let findReferences = vscode.commands.registerCommand("better-touch-bar.dev.findReferences", function () {
+		vscode.commands.executeCommand("editor.action.goToReferences")
 		openMenu("main")
-	});
+	})
 
-	let quickFix = vscode.commands.registerCommand('better-touch-bar.dev.quickFix', function () {
-		vscode.commands.executeCommand("editor.action.quickFix");
-	});
+	let quickFix = vscode.commands.registerCommand("better-touch-bar.dev.quickFix", function () {
+		vscode.commands.executeCommand("editor.action.quickFix")
+	})
 
-	context.subscriptions.push(previousTab, nextTab, cancel, runMain, runWPILibBuild, runWPILibDeploy, runWPILibStartRioLog, runWPILibSimulate, runWPILibStartTool, runArduinoBuild, runArduinoDeploy, runArduinoLibraries, runArduinoSerialMonitor, displayGit, branch, checkout, merge, reset, pop, stash, sync, rename, find, findDefinition, findTypeDefinition, findImplementations, findReferences, quickFix);
+	context.subscriptions.push(previousTab, nextTab, cancel, runMain, runWPILibBuild, runWPILibDeploy, runWPILibDeployEvent, runWPILibStartRioLog, runWPILibSimulate, runWPILibStartTool, runArduinoBuild, runArduinoDeploy, runArduinoLibraries, runArduinoSerialMonitor, displayGit, branch, checkout, merge, reset, pop, stash, sync, rename, find, findDefinition, findTypeDefinition, findImplementations, findReferences, quickFix)
 }
 // @ts-ignore
-exports.activate = activate;
+exports.activate = activate
 
-// this method is called when your extension is deactivated
 function deactivate() {
 	// Restore default buttons
 	userConfig.update("keyboard.touchbar.ignored", [], true)

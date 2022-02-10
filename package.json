@@ -43,6 +43,10 @@
 				"title": "Deploy"
 			},
 			{
+				"command": "better-touch-bar.run.wpilib.deployEvent",
+				"title": "Deploy*"
+			},
+			{
 				"command": "better-touch-bar.run.wpilib.startRioLog",
 				"title": "RioLog"
 			},
@@ -71,8 +75,8 @@
 				"title": "Serial Monitor"
 			},
 			{
-				"command": "better-touch-bar.git.stage",
-				"title": "1-Stage",
+				"command": "better-touch-bar.git.open",
+				"title": "1-Open",
 				"icon": "./assets/git.png"
 			},
 			{
@@ -159,6 +163,10 @@
 					"when": "false"
 				},
 				{
+					"command": "better-touch-bar.run.wpilib.deployEvent",
+					"when": "false"
+				},
+				{
 					"command": "better-touch-bar.run.wpilib.startRioLog",
 					"when": "false"
 				},
@@ -187,7 +195,7 @@
 					"when": "false"
 				},
 				{
-					"command": "better-touch-bar.git.stage",
+					"command": "better-touch-bar.git.open",
 					"when": "false"
 				},
 				{
@@ -274,7 +282,12 @@
 				{
 					"command": "better-touch-bar.run.wpilib.deploy",
 					"group": "run_group_1",
-					"when": "better-touch-bar:menu == 'run-wpilib'"
+					"when": "better-touch-bar:menu == 'run-wpilib' && !better-touch-bar:wpilib-event"
+				},
+				{
+					"command": "better-touch-bar.run.wpilib.deployEvent",
+					"group": "run_group_1",
+					"when": "better-touch-bar:menu == 'run-wpilib' && better-touch-bar:wpilib-event"
 				},
 				{
 					"command": "better-touch-bar.run.wpilib.startRioLog",
@@ -312,7 +325,7 @@
 					"when": "better-touch-bar:menu == 'run-arduino'"
 				},
 				{
-					"command": "better-touch-bar.git.stage",
+					"command": "better-touch-bar.git.open",
 					"group": "group_2",
 					"when": "better-touch-bar:menu == 'main' && !inDebugMode"
 				},
