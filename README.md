@@ -19,5 +19,5 @@ A VSCode extension which adds useful functions to the Touch Bar, including:
 To install, clone the repository to the VSCode extensions folder:
 
 ```
-git clone 'https://github.com/jonahb55/Better-Touch-Bar.git' ~/.vscode/extensions/Better-Touch-Bar
+git clone "https://github.com/jonahb55/Better-Touch-Bar.git" ~/.vscode/extensions/Better-Touch-Bar
 ```
