@@ -59,7 +59,7 @@ function activate(context) {
 	})
 
 	let runWPILibDeployEvent = vscode.commands.registerCommand("better-touch-bar.run.wpilib.deployEvent", function () {
-		vscode.commands.executeCommand("wpilib-quick-commit.deploy")
+		vscode.commands.executeCommand("event-deploy.deploy")
 		openMenu("main")
 	})
 
